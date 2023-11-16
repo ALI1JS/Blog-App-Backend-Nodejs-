@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "app.js",
+  "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.mjs"
+    "start": "nodemon index.mjs"
+  },
+  "engines": {
+    "node": "18.16.1"
   },
   "author": "ALI.JS",
   "license": "ISC",
