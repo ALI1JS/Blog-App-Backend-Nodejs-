@@ -1,0 +1,143 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+      "title":"Blog App",
+      "description":"this app can serve on every operation in blog app",
+      "version":"1.0.0",
+      "contact":{
+        "name":"ALI ISMAIL HASSAN",
+        "email":"aliismail.js@gmail.com"
+      }
+    },
+
+    "servers":[
+        {
+            "url":"http://localhost:5000/",
+            "description":"local host"
+        }
+    ],
+    "basepath":"/api",
+    "schemes":["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+
+    "paths":{
+        "/api/auth/login":{
+            "post":{
+                "summary":"to login in the system",
+                "description":"login in the system and  make a token for any user hase account and try to login",
+                "responses":{
+                    "200":{
+                        "description": "Successful response",
+                        "schema":{
+                            "type":"object",
+                            "properties":{
+                                "message":{
+                                    "type":"string"
+                                },
+                                "token":{
+                                 "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "404":{
+                        "description":"This user not found",
+                        "schema":{
+                            "type":"object",
+                             "properties":{
+                                "message":{
+                                    "type":"string"
+                                }
+                             }
+                        }
+
+                     }
+                },
+                 "parameters": [
+                    {
+                      "in": "body", 
+                      "name": "email",
+                      "description": "the email of the user to login in the system",
+                       "schema":{
+                          "type":"object",
+                          "properties":{
+                            "email":{
+                                "type":"string",
+                                "description":"user email to login in Blog system"
+                            },
+                            "password":{
+                                "type":"string",
+                                "description":"user password to login in Blog system"
+                            }
+                          }
+                       }
+                    }
+                  ]
+            }
+        },
+        "/api/auth/signup":{
+            "post":{
+                "summary":"create new acount in the system",
+                "description":"this api at first Validate the data that come from the body then check if exsit and create it",
+                "responses":{
+                    "200":{
+                        "description":" Registration successful",
+                        "schema":{
+                            "type":"object",
+                             "properties":{
+                                "message":{
+                                    "type":"string"
+                                }
+                             }
+                        }
+                    },
+                    "500":{
+                        "description":"sorrry occures error you can't register ",
+                        "schema":{
+                            "type":"object",
+                            "properties":{
+                                "message":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "in":"body",
+                        "name":"Registeration",
+                        "description":"this parameter for Registeration process",
+                        "schema":{
+                            "type":"object",
+                            "properties":{
+                                "email":{
+                                    "type":"string",
+                                    "description":"user email to register in blog system "
+                                },
+                                "username":{
+                                    "type":"string",
+                                    "description":"this idintifier for it in the system"
+                                },
+                                "password":{
+                                    "type":"string",
+                                    "description":"password must be strong and not share it with others"
+                                },
+                                "jobTitle":{
+                                    "type":"string",
+                                    "description":"the job title for the user to give more realablity"
+                                },
+                                "desc":{
+                                    "type":"string",
+                                    "description":"some description for the user about his experiences"
+                                }
+                            }
+                        }
+
+                    }
+                ]
+            }
+        }
+    }
+}
