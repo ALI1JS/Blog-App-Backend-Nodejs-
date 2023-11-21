@@ -1,11 +1,11 @@
 import {Stripe, paypal} from "./index.mjs"
 
-const stripe = new Stripe("sk_test_51N06UzLV9R6YV6E1YYJtRczVJemzUMbzUuQqbkXjgCzz1Ku8Xb4KLgIhePteIIN2T5GBxWcth9wKfkU0d4P9Qoe200Nm1t5VEt");
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const configure = paypal.configure({
     "mode": "sandbox",
-    "client_id": "Ae4qVLe_uhthQQpbP8ugWgG4Iynu26wy3IZ91cALbLGLhHriF05IsEPtjseeR97sLNaO09LtIwWPxIM_",
-    "client_secret": "EArG_MTIhNNwv2dv_kpT_dhbUygZf8RdJ8p5oCUbCybKFY0YXR84sZxed2asglG8fmHbSLOgxSygkFnc"
+    "client_id": process.env.PAYPAL_CLIENT_ID,
+    "client_secret":process.env.PAYPAL_CLIENT_SECRET
 })
 
 export function success (req, res)
